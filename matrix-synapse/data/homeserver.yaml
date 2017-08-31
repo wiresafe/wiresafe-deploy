@@ -50,7 +50,7 @@ server_name: "neo.wiresafe.com"
 pid_file: /data/homeserver.pid
 
 # Whether to serve a web client from the HTTP/HTTPS root resource.
-web_client: True
+web_client: false
 
 # The root directory to server for the above web client.
 # If left undefined, synapse will serve the matrix-angular-sdk web client.
@@ -102,17 +102,8 @@ listeners:
 
     # List of HTTP resources to serve on this listener.
     resources:
-      -
-        # List of resources to host on this listener.
-        names:
-          - client     # The client-server APIs, both v1 and v2
-          - webclient  # The bundled webclient.
-
-        # Should synapse compress HTTP responses to clients that support it?
-        # This should be disabled if running synapse behind a load balancer
-        # that can do automatic compression.
+      - names: [client]
         compress: true
-
       - names: [federation]  # Federation APIs
         compress: false
 
@@ -126,7 +117,7 @@ listeners:
     x_forwarded: false
 
     resources:
-      - names: [client, webclient]
+      - names: [client]
         compress: true
       - names: [federation]
         compress: false
@@ -344,7 +335,7 @@ turn_allow_guests: True
 ## Registration ##
 
 # Enable registration for new users.
-enable_registration: True
+enable_registration: False
 
 # If set, allows registration by anyone who also has the shared
 # secret, even if registration is otherwise disabled.
@@ -363,9 +354,8 @@ allow_guest_access: False
 # The list of identity servers trusted to verify third party
 # identifiers by this server.
 trusted_third_party_id_servers:
-    - matrix.org
-    - vector.im
-    - riot.im
+    - neo.wiresafe.com
+    - neo-identity.wiresafe.com
 
 
 ## Metrics ###
@@ -502,7 +492,10 @@ password_config:
 #         #bind_password:
 #         #filter: "(objectClass=posixAccount)"
 
-
+password_providers:
+  - module: "rest_auth_provider.RestAuthProvider"
+    config:
+      endpoint: "http://identity:8090"
 
 # Control how push messages are sent to google/apple to notifications.
 # Normally every message said in a room with one or more people using
