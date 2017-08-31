@@ -18,6 +18,15 @@ $ gcloud docker -- push gcr.io/wiresafe-project/matrix
 
 $ kubectl set image deploy/matrix matrix=gcr.io/wiresafe-project/matrix:latest --namespace=matrix
 ```
+In case `kubectl` complains about missing connection to localhost refused, you need to set the right config:
+```
+# List the clusters, use yours. we'll go with matrix-cluster in this example
+$ gcloud container clusters list
+
+# Get a config
+$ gcloud container clusters get-credentials matrix-cluster
+
+```
 
 ## Kubernetes Deployment
 To deploy matrix home server from scratch.
