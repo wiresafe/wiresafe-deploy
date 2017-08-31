@@ -5,7 +5,6 @@ metadata:
   namespace: matrix
   annotations:
     kubernetes.io/ingress.global-static-ip-name: neo-wiresafe-com
-    kubernetes.io/ingress.class: "gce"
     kubernetes.io/tls-acme: "true"
 spec:
   tls:
