@@ -1,0 +1,18 @@
+##
+# service: riot-prod/riot
+##
+apiVersion: v1
+kind: Service
+metadata:
+  name: riot
+  namespace: riot-prod
+  labels:
+    app: riot
+spec:
+  selector:
+    app: riot
+  type: NodePort
+  ports:
+  - port: 80
+    name: http
+    targetPort: http

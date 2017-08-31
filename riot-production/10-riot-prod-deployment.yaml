@@ -1,0 +1,28 @@
+##
+# deployment: riot-prod/riot
+##
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: riot
+  namespace: riot-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: riot
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: riot
+    spec:
+      containers:
+      - image: gcr.io/wiresafe-project/riot-web-wiresafe-prod:latest
+        name:  riot-prod
+        ports:
+        - containerPort: 80
+          name: http
