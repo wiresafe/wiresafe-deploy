@@ -495,7 +495,7 @@ password_config:
 password_providers:
   - module: "rest_auth_provider.RestAuthProvider"
     config:
-      endpoint: "http://identity:8090"
+      endpoint: "https://neo-identity.wiresafe.com"
 
 # Control how push messages are sent to google/apple to notifications.
 # Normally every message said in a room with one or more people using
