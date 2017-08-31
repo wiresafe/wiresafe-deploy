@@ -16,7 +16,7 @@ spec:
       - name: neo-disk
       containers:
       - name: matrix
-        image: gcr.io/wiresafe-project/matrix
+        image: gcr.io/wiresafe-project/matrix:latest
         env:
         - name: SERVER_NAME
           value: "neo.wiresafe.com"
