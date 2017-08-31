@@ -4,9 +4,9 @@ metadata:
   name: neo-disk
   namespace: matrix
 spec:
+  gcePersistentDisk:
+    pdName: neo-disk
   accessModes:
   - ReadWriteOnce
   capacity:
-    storage: 10Gi
-  hostPath:
-    path: /data/neo-disk
+    storage: 100Gi

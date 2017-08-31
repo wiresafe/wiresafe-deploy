@@ -9,11 +9,14 @@ spec:
     type: Recreate
   template:
     metadata:
+      namespace: matrix
       labels:
         app: matrix
     spec:
       volumes:
       - name: neo-disk
+        gcePersistentDisk:
+          pdName: neo-disk
       containers:
       - name: matrix
         image: gcr.io/wiresafe-project/matrix:latest
