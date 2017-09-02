@@ -92,6 +92,7 @@ lookup:
 
 firebase:
   enabled: true
+  credentials: "/etc/firebase/wiresafe-project-2861fce4294f.json"
   database: "https://wiresafe-project.firebaseio.com/"
 
 forward:

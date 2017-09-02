@@ -19,6 +19,7 @@ RUN mkdir /var/mxisd || true
 RUN chown mxisd /var/mxisd
 RUN rm -rf /mxisd
 COPY /etc/* /etc/mxisd/
+RUN mkdir /etc/firebase || true
 
 CMD ["sh", "-c", "/opt/mxisd/mxisd.jar --spring.config.location=/etc/mxisd/ --spring.config.name=mxisd"]
 EXPOSE 8090

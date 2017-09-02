@@ -60,15 +60,21 @@ spec:
       - name: neo-identity-disk
         gcePersistentDisk:
           pdName: neo-identity-disk
+      - name: firebase-secrets
+        secret:
+          secretName: neo-identity-service-account
       containers:
       - name: matrix-identity
-        image: gcr.io/wiresafe-project/matrix-identity:0.0.1
+        image: gcr.io/wiresafe-project/matrix-identity:0.0.4
         ports:
         - containerPort: 8090
           name: http
         volumeMounts:
         - mountPath: /data
           name: neo-identity-disk
+        - mountPath: /etc/firebase
+          name: firebase-secrets
+          readOnly: true
         readinessProbe:
           httpGet:
             path: /_matrix/identity/status
