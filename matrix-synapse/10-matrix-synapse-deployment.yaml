@@ -65,7 +65,7 @@ spec:
           secretName: neo-identity-service-account
       containers:
       - name: matrix-identity
-        image: gcr.io/wiresafe-project/matrix-identity:0.0.4
+        image: gcr.io/wiresafe-project/matrix-identity:0.0.5
         ports:
         - containerPort: 8090
           name: http
