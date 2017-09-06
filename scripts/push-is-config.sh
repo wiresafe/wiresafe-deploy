@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
 # gets config files from production and saves them in /_private
 
-# update local config
+# update the pod info
 source ${SCRIPT_ROOT}/config.sh
 
-IS_CONFIG_FILES=()
+SOURCE=${IS_LOCAL_CONFIG_PATH}
+DEST=${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH}
 
-if [ ${1} ]; then IS_CONFIG_FILES=(${1}); fi
-
-# make sure the destination folder exists
-mkdir -p ${IS_LOCAL_CONFIG_PATH}
-
-# download config files
-echo  "pushing config files:  ${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH} > ${IS_LOCAL_CONFIG_PATH}"
+echo source: ${SOURCE}
+echo dest: ${DEST}
 echo
-for f in ${IS_CONFIG_FILES[*]}
+for f in ${SOURCE[*]}
 do
-    DEST_PATH=${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH}/
-    kubectl cp ${IS_LOCAL_CONFIG_PATH}/${f} ${DEST_PATH}/
-    echo ${DEST_PATH}${f}
+    echo kubectl cp ${SOURCE} ${DEST}
 done
