@@ -25,7 +25,13 @@ spec:
             secretName: neo-identity-service-account
       containers:
         - name: matrix-identity
-          image: 'gcr.io/wiresafe-project/matrix-identity:0.0.5'
+          image: 'gcr.io/wiresafe-project/matrix-identity:0.0.6'
+          env:
+            - name: SPRING_APPLICATION_JSON
+              valueFrom:
+                secretKeyRef:
+                  name: neo-identity-config
+                  key: neo-identity-config.json
           ports:
             - containerPort: 8090
               name: http
