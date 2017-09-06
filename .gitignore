@@ -27,11 +27,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-/.idea/
-/.history/
-/secrets/
-/test/.idea/
-.idea\n
 .idea
 .vscode
-_private/**
+/.history/
+/_private/**
+/secrets
