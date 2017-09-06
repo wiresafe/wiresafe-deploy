@@ -8,8 +8,8 @@ IS_CONFIG_FILES=()
 
 if [ ${1} ]; then IS_CONFIG_FILES=(${1}); fi
 
-# upload config files
-echo  "uploading config files:  ${IS_LOCAL_CONFIG_PATH} > ${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH}"
+
+echo  "downloading config files:  ${IS_LOCAL_CONFIG_PATH} > ${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH}"
 echo
 for f in ${IS_CONFIG_FILES[*]}
 do

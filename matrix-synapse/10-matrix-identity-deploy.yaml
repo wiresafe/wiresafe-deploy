@@ -20,6 +20,9 @@ spec:
         - name: neo-identity-config
           persistentVolumeClaim:
             claimName: neo-identity-config
+        - name: neo-identity-var
+          persistentVolumeClaim:
+            claimName: neo-identity-var
         - name: firebase-secrets
           secret:
             secretName: neo-identity-service-account
@@ -43,6 +46,9 @@ spec:
             - name: firebase-secrets
               mountPath: /etc/firebase
               readOnly: true
+            - name: neo-identity-var
+              mountPath: /var/mxisd
+              readOnly: false
           readinessProbe:
             httpGet:
               path: /_matrix/identity/status
