@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: matrix-identity
+  namespace: matrix
+  labels:
+    app: matrix-identity
+spec:
+  ports:
+  - port: 80
+    name: http
+    targetPort: http
+  selector:
+    app: matrix-identity
+  type: NodePort

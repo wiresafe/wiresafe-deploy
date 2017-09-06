@@ -31,3 +31,7 @@ Temporary Items
 /.history/
 /secrets/
 /test/.idea/
+.idea\n
+.idea
+.vscode
+_private/**
