@@ -31,9 +31,9 @@ spec:
               name: http
           volumeMounts:
             - name: neo-identity-disk
-              mountPath: /data
+              mountPath: /var/mxisd
             - name: neo-identity-config
-              mountPath: /var/lib/matrix/neo-identity
+              mountPath: /etc/mxisd
             - name: firebase-secrets
               mountPath: /etc/firebase
               readOnly: true
