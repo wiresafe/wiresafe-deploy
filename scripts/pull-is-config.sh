@@ -4,15 +4,12 @@
 # update local config
 source ${SCRIPT_ROOT}/config.sh
 
-IS_CONFIG_FILES=()
+SOURCE=${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH}
+DEST=${IS_LOCAL_CONFIG_PATH}
 
-if [ ${1} ]; then IS_CONFIG_FILES=(${1}); fi
-
-
-echo  "downloading config files:  ${IS_LOCAL_CONFIG_PATH} > ${IS_POD_NAME}:${IS_SERVER_CONFIG_PATH}"
+echo  "downloading config files"
+echo source: ${SOURCE}
+echo dest: ${DEST}
 echo
-for f in ${IS_CONFIG_FILES[*]}
-do
-    kubectl exec ${IS_POD_NAME} -- cat ${IS_SERVER_CONFIG_PATH}/${f} > ${IS_LOCAL_CONFIG_PATH}/${f}
-    echo ${f}
-done
+echo kubectl cp ${SOURCE} ${DEST}
+kubectl cp ${SOURCE} ${DEST}
