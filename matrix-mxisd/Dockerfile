@@ -1,1 +1,1 @@
-FROM kamax/mxisd:0.1.0-24-gd2d5f80
+FROM kamax/mxisd:v0.1.0-26-g2ce3bab

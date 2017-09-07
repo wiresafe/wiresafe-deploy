@@ -28,7 +28,7 @@ spec:
             secretName: neo-identity-service-account
       containers:
         - name: matrix-identity
-          image: 'gcr.io/wiresafe-project/matrix-identity:0.0.7'
+          image: 'gcr.io/wiresafe-project/matrix-identity:0.0.9'
           env:
             - name: SPRING_APPLICATION_JSON
               valueFrom:
