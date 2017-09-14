@@ -3,6 +3,8 @@ apiVersion: v1
 metadata:
   name: neo-disk
   namespace: matrix
+  labels:
+    app: matrix
 spec:
   storageClassName: standard
   accessModes:
@@ -16,6 +18,8 @@ apiVersion: v1
 metadata:
   namespace: matrix
   name: neo-config
+  labels:
+    app: matrix
 spec:
   storageClassName: standard
   accessModes:
