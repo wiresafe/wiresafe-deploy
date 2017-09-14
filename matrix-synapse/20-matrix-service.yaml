@@ -10,6 +10,9 @@ spec:
   - port: 80
     name: http
     targetPort: http
+  - port: 8448
+    name: federation
+    targetPort: federation
   selector:
     app: matrix
   type: NodePort

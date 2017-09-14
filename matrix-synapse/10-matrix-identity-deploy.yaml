@@ -26,9 +26,13 @@ spec:
         - name: firebase-secrets
           secret:
             secretName: neo-identity-service-account
+#        - name: neo-disk
+#          persistentVolumeClaim:
+#            claimName: neo-disk
+#            readOnly: true
       containers:
         - name: matrix-identity
-          image: 'gcr.io/wiresafe-project/matrix-identity:0.0.9'
+          image: 'gcr.io/wiresafe-project/matrix-identity:0.0.10'
           env:
             - name: SPRING_APPLICATION_JSON
               valueFrom:
@@ -49,6 +53,9 @@ spec:
             - name: neo-identity-var
               mountPath: /var/mxisd
               readOnly: false
+#            - name: neo-disk
+#              mountPath: /var/synapse
+#              readOnly: true
           readinessProbe:
             httpGet:
               path: /_matrix/identity/status
