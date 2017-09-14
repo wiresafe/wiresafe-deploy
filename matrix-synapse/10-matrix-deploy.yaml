@@ -19,10 +19,10 @@ spec:
       - name: neo-disk
         persistentVolumeClaim:
           claimName: neo-disk
-      - name: neo-config
-        persistentVolumeClaim:
-          claimName: neo-config
-          readOnly: true
+#      - name: neo-config
+#        persistentVolumeClaim:
+#          claimName: neo-config
+#          readOnly: true
       containers:
       - name: matrix
         image: gcr.io/wiresafe-project/matrix:latest
@@ -37,8 +37,8 @@ spec:
         volumeMounts:
         - name: neo-disk
           mountPath: /data
-        - name: neo-config
-          mountPath: /var/lib/matrix/neo
+#        - name: neo-config
+#          mountPath: /var/lib/matrix/neo
         readinessProbe:
           httpGet:
             path: /_matrix/client/versions
