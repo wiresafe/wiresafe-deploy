@@ -14,11 +14,11 @@ spec:
     - neo.wiresafe.com
   backend:
     serviceName: matrix
-    servicePort: http
+    servicePort: synapse-http
   rules:
     - host: neo.wiresafe.com
       http:
         paths:
         - backend:
             serviceName: matrix
-            servicePort: http
+            servicePort: synapse-http

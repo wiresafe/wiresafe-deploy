@@ -7,12 +7,10 @@ metadata:
     app: matrix
 spec:
   ports:
-  - port: 80
-    name: http
-    targetPort: 8008
+  - port: 8008
+    name: synapse-http
   - port: 8448
-    name: federation
-    targetPort: federation
+    name: synapse-https
   selector:
     app: matrix
   type: NodePort
