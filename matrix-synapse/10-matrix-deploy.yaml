@@ -19,11 +19,54 @@ spec:
       - name: neo-disk
         persistentVolumeClaim:
           claimName: neo-disk
-#      - name: neo-config
-#        persistentVolumeClaim:
-#          claimName: neo-config
-#          readOnly: true
+      - name: neo-identity-disk
+        persistentVolumeClaim:
+          claimName: neo-identity-disk
+      - name: neo-identity-config
+        persistentVolumeClaim:
+          claimName: neo-identity-config
+      - name: neo-identity-var
+        persistentVolumeClaim:
+          claimName: neo-identity-var
+      - name: firebase-secrets
+        secret:
+          secretName: neo-identity-service-account
       containers:
+      - name: matrix-identity
+
+        image: 'gcr.io/wiresafe-project/matrix-identity:0.0.10'
+        env:
+        - name: SPRING_APPLICATION_JSON
+          valueFrom:
+            secretKeyRef:
+              name: neo-identity-config
+              key: neo-identity-config.json
+        ports:
+        - containerPort: 8090
+          hostPort: 8090
+        volumeMounts:
+        - name: neo-identity-disk
+          mountPath: /neo-identity-disk
+        - name: neo-identity-config
+          mountPath: /etc/mxisd
+        - name: firebase-secrets
+          mountPath: /etc/firebase
+          readOnly: true
+        - name: neo-identity-var
+          mountPath: /var/mxisd
+          readOnly: false
+        - name: neo-disk
+          mountPath: /var/synapse
+          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /_matrix/identity/status
+            port: 8090
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+          failureThreshold: 10
       - name: matrix
         image: gcr.io/wiresafe-project/matrix:latest
         env:
@@ -33,18 +76,15 @@ spec:
           value: "yes"
         ports:
         - containerPort: 8008
-          name: http
         - containerPort: 8448
           name: federation
         volumeMounts:
         - name: neo-disk
           mountPath: /data
-#        - name: neo-config
-#          mountPath: /var/lib/matrix/neo
         readinessProbe:
           httpGet:
             path: /_matrix/client/versions
-            port: http
+            port: 8008
           initialDelaySeconds: 30
           periodSeconds: 10
           successThreshold: 1

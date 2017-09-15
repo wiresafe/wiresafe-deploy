@@ -9,7 +9,7 @@ spec:
   ports:
   - port: 80
     name: http
-    targetPort: http
+    targetPort: 8008
   - port: 8448
     name: federation
     targetPort: federation

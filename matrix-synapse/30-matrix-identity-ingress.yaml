@@ -14,11 +14,11 @@ spec:
     - neo-identity.wiresafe.com
   backend:
     serviceName: matrix-identity
-    servicePort: http
+    servicePort: 8090
   rules:
     - host: neo-identity.wiresafe.com
       http:
         paths:
         - backend:
             serviceName: matrix-identity
-            servicePort: http
+            servicePort: 8090
