@@ -33,3 +33,10 @@ Temporary Items
 /_private/**
 /secrets
 /.gitsecret/
+.wsctl
+
+/src/matrix/docker/data/neo.wiresafe.com.tls.crt
+/src/matrix/docker/data/neo.wiresafe.com.tls.dh
+/src/matrix/docker/data/neo.wiresafe.com.tls.key
+/src/matrix/docker/data/neo.wiresafe.com.signing.key
+/src/matrix/docker/data/turnserver.conf
