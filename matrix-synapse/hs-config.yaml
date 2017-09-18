@@ -1,6 +1,0 @@
-HS_SERVER_CONFIG_PATH: /data
-HS_LOCAL_CONFIG_PATH: ${PROJECT_ROOT}/_private${HS_SERVER_CONFIG_PATH}
-IS_SERVER_CONFIG_PATH: /etc/mxisd
-IS_LOCAL_CONFIG_PATH: ${PROJECT_ROOT}/_private${IS_SERVER_CONFIG_PATH}
-HS_POD_NAME: $(kubectl get po -n matrix -l app=matrix -o=custom-columns=':metadata.name')
-IS_POD_NAME: $(kubectl get po -n matrix -l app=matrix-identity -o=custom-columns=':metadata.name')
