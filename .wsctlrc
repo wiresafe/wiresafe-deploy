@@ -1,0 +1,31 @@
+name: wiresafe-deploy
+kubeContext: wiresafe-prod
+env:
+  prod:
+    context: wiresafe-prod
+  dev:
+    context: matrix
+project:
+  name: wiresafe-deploy
+  env:
+    prod:
+      context: wiresafe-prod
+    dev:
+      context: matrix
+  namespace:
+    chat: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/chat/chat-namespace.yaml
+    firebase-auth: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/firebase-auth/firebase-auth-namespace.yaml
+    kube-public: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/kube-public/kube-public-namespace.yaml
+    matrix: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/matrix/matrix-namespace.yaml
+    public-website: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/public-website/public-website-namespace.yaml
+    riot-prod: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/riot-prod/riot-prod-namespace.yaml
+    riot-stage: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/riot-stage/riot-stage-namespace.yaml
+    wordpress: >-
+      /Users/dave/dev/wiresafe/wiresafe-deploy/.wsctl/prod/wordpress/wordpress-namespace.yaml
