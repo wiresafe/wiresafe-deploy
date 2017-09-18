@@ -8,7 +8,7 @@ Deployment scripts, Docker, Kubernetes, etc... for Wiresafe projects
 If you make changes to matrix-synapse/Dockerfile you'll need to rebuild and push the images to google cloud.
 
 ```bash
-$ cd matrix-synapse
+$ cd src/matrix/docker
 
 $ docker build -t gcr.io/wiresafe-project/matrix .
 
@@ -29,14 +29,12 @@ $ gcloud container clusters get-credentials matrix-cluster
 ```
 
 ## Kubernetes Deployment
-To deploy matrix home server from scratch.
+To deploy matrix home server and identity server from scratch.
 
 ```bash
-$ kubectl apply -f matrix-synapse
+$ kubectl apply -f src/matrix/deploy  
 
 ```
-
-
 
 ## Riot Deployment
 
