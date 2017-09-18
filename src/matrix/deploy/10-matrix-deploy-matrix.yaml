@@ -1,0 +1,90 @@
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  namespace: matrix
+  name: matrix
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      namespace: matrix
+      name: matrix
+      labels:
+        app: matrix
+    spec:
+      volumes:
+      - name: neo-disk
+        persistentVolumeClaim:
+          claimName: neo-disk
+      - name: neo-identity-disk
+        persistentVolumeClaim:
+          claimName: neo-identity-disk
+      - name: neo-identity-config
+        persistentVolumeClaim:
+          claimName: neo-identity-config
+      - name: neo-identity-var
+        persistentVolumeClaim:
+          claimName: neo-identity-var
+      - name: neo-hsconfig
+        secret:
+          secretName: matrix-hs-config
+      containers:
+      - name: matrix-identity
+        image: 'gcr.io/wiresafe-project/matrix-identity:0.0.11'
+        env:
+        - name: SPRING_APPLICATION_JSON
+          valueFrom:
+            secretKeyRef:
+              name: neo-identity-config
+              key: neo-identity-config.json
+        ports:
+        - containerPort: 8090
+        volumeMounts:
+        - name: neo-identity-disk
+          mountPath: /neo-identity-disk
+        - name: neo-identity-config
+          mountPath: /etc/mxisd
+        - name: neo-identity-var
+          mountPath: /var/mxisd
+          readOnly: false
+        - name: neo-disk
+          mountPath: /var/synapse
+          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /_matrix/identity/status
+            port: 8090
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+          failureThreshold: 10
+      - name: matrix
+        image: gcr.io/wiresafe-project/matrix:latest
+        env:
+        - name: SERVER_NAME
+          value: "neo.wiresafe.com"
+        - name: REPORT_STATS
+          value: "yes"
+        ports:
+        - containerPort: 8008
+        - containerPort: 8448
+        volumeMounts:
+        - name: neo-disk
+          mountPath: /var/local
+        - name: neo-hsconfig
+          mountPath: /var/conf
+        args:
+        - "start"
+        - "/data/homeserver.yaml"
+        readinessProbe:
+          httpGet:
+            path: /_matrix/client/versions
+            port: 8008
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+          failureThreshold: 10

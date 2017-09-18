@@ -1,0 +1,14 @@
+## mounts homeserver:/var/local
+## contains: homeserver.db
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: neo-disk
+  namespace: matrix
+spec:
+  storageClassName: standard
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
