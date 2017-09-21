@@ -1,60 +1,65 @@
 {
-   "server":{
-      "name":"neo.wiresafe.com",
-      "publicUrl":"https://neo-identity.wiresafe.com"
-   },
-   "key":{
-      "path":"/var/mxisd/sign.key"
-   },
-   "lookup":{
-      "recursive":{
-         "enabled":true,
-         "allowedCidr":[
-            "0/0"
-         ]
+  "server": {
+    "name": "neo.wiresafe.com",
+    "publicUrl": "https://neo-identity.wiresafe.com"
+  },
+  "key": {
+    "path": "/var/mxisd/sign.key"
+  },
+  "lookup": {
+    "recursive": {
+      "enabled": true,
+      "allowedCidr": [
+        "0/0"
+      ]
+    }
+  },
+  "firebase": {
+    "enabled": true,
+    "credentials": "/etc/firebase/secret.json",
+    "database": "https://wiresafe-project.firebaseio.com/"
+  },
+  "sql": {
+    "enabled": false,
+    "type": "sqlite",
+    "connection": "/var/synapse/homeserver.db",
+    "auth": {
+      "enabled": false
+    },
+    "identity": {
+      "type": "mxid",
+      "medium": {
+        "email": "SELECT user_id AS uid FROM user_threepids WHERE medium = ? AND address = ?"
       }
-   },
-   "sql":{
-      "enabled":true,
-      "type":"sqlite",
-      "connection":"/var/synapse/homeserver.db",
-      "auth":{
-         "enabled":false
-      },
-      "identity":{
-         "type":"mxid",
-         "medium":{
-            "email":"SELECT user_id AS uid FROM user_threepids WHERE medium = ? AND address = ?"
-         }
+    }
+  },
+  "storage": {
+    "provider": {
+      "sqlite": {
+        "database": "/var/mxisd/mxisd.db"
       }
-   },
-   "storage":{
-      "provider":{
-         "sqlite":{
-            "database":"/var/mxisd/mxisd.db"
-         }
+    }
+  },
+  "invite": {
+    "sender": {
+      "email": {
+        "host": "smtp.example.org",
+        "port": 588,
+        "tls": 1,
+        "login": "matrix-identity@example.org",
+        "password": "mxisd",
+        "email": "matrix-identity@example.org",
+        "name": "WireSafe",
+        "contentPath": "/etc/mxisd/email/invite-template.eml"
       }
-   },
-   "invite":{
-      "sender":{
-         "email":{
-            "host":"smtp.example.org",
-            "port":588,
-            "tls":1,
-            "login":"matrix-identity@example.org",
-            "password":"mxisd",
-            "email":"matrix-identity@example.org",
-            "name":"WireSafe",
-            "contentPath":"/etc/mxisd/email/invite-template.eml"
-         }
+    }
+  },
+  "dns": {
+    "overwrite": {
+      "homeserver": {
+        "name": "neo.wiresafe.com",
+        "value": "neo.wiresafe.com"
       }
-   },
-   "dns":{
-      "overwrite":{
-         "homeserver":{
-            "name":"neo.wiresafe.com",
-            "value":"neo.wiresafe.com"
-         }
-      }
-   }
+    }
+  }
 }
