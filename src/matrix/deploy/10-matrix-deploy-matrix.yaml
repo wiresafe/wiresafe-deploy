@@ -18,9 +18,6 @@ spec:
       - name: neo-disk
         persistentVolumeClaim:
           claimName: neo-disk
-      - name: neo-identity-disk
-        persistentVolumeClaim:
-          claimName: neo-identity-disk
       - name: neo-identity-config
         persistentVolumeClaim:
           claimName: neo-identity-config
@@ -30,6 +27,9 @@ spec:
       - name: neo-hsconfig
         secret:
           secretName: matrix-hs-config
+      - name: firebase-secrets
+        secret:
+          secretName: neo-identity-service-account
       containers:
       - name: matrix-identity
         image: 'gcr.io/wiresafe-project/matrix-identity:0.0.11'
@@ -42,8 +42,6 @@ spec:
         ports:
         - containerPort: 8090
         volumeMounts:
-        - name: neo-identity-disk
-          mountPath: /neo-identity-disk
         - name: neo-identity-config
           mountPath: /etc/mxisd
         - name: neo-identity-var
@@ -51,6 +49,9 @@ spec:
           readOnly: false
         - name: neo-disk
           mountPath: /var/synapse
+          readOnly: true
+        - name: firebase-secrets
+          mountPath: /etc/firebase
           readOnly: true
         readinessProbe:
           httpGet:
