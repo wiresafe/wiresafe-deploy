@@ -1,0 +1,27 @@
+##
+# ingress: riot-prod/riot
+##
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: riot
+  namespace: riot-prod
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: chat-wiresafe-com
+    kubernetes.io/tls-acme: "true"
+    ingress.kubernetes.io/force-ssl-redirect: true
+spec:
+  tls:
+  - secretName: chat-wiresafe-com-tls
+    hosts:
+    - chat.wiresafe.com
+  backend:
+    serviceName: riot
+    servicePort: http
+  rules:
+  - host: chat.wiresafe.com
+    http:
+        paths:
+        - backend:
+            serviceName: riot
+            servicePort: http

@@ -9,7 +9,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 # BRANCH=wiresafe-stage - staging branch (default)
 # BRANCH=wiresafe-prod - production branch
 ##
-ARG BRANCH=wiresafe-stage
+ARG BRANCH=wiresafe-prod
 RUN git clone --branch ${BRANCH} --depth=1 --single-branch https://github.com/wiresafe/riot-web
 WORKDIR /riot-web
 
