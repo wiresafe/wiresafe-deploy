@@ -1,0 +1,24 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  namespace: riot-stage
+  name: riot
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: stage-chat-wiresafe-com
+    kubernetes.io/ingress.class: gce
+#    kubernetes.io/tls-acme: false
+spec:
+  backend:
+    serviceName: riot
+    servicePort: http
+  rules:
+  - host: stage.chat.wiresafe.com
+    http:
+      paths:
+      - backend:
+          serviceName: riot
+          servicePort: http
+#  tls:
+#    - hosts:
+#      - stage.chat.wiresafe.com
+#      secretName: stage-chat-wiresafe-com-tls
