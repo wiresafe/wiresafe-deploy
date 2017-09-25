@@ -18,18 +18,12 @@ spec:
       - name: neo-disk
         persistentVolumeClaim:
           claimName: neo-disk
-      - name: neo-identity-disk
-        persistentVolumeClaim:
-          claimName: neo-identity-disk
       - name: neo-identity-config
         persistentVolumeClaim:
           claimName: neo-identity-config
       - name: neo-identity-var
         persistentVolumeClaim:
           claimName: neo-identity-var
-      - name: neo-hsconfig
-        secret:
-          secretName: matrix-hs-config
       containers:
       - name: matrix-identity
         image: 'gcr.io/wiresafe-project/matrix-identity:0.0.11'
@@ -42,8 +36,6 @@ spec:
         ports:
         - containerPort: 8090
         volumeMounts:
-        - name: neo-identity-disk
-          mountPath: /neo-identity-disk
         - name: neo-identity-config
           mountPath: /etc/mxisd
         - name: neo-identity-var
@@ -73,12 +65,9 @@ spec:
         - containerPort: 8448
         volumeMounts:
         - name: neo-disk
-          mountPath: /var/local
-        - name: neo-hsconfig
-          mountPath: /var/conf
+          mountPath: /data
         args:
         - "start"
-        - "/data/homeserver.yaml"
         readinessProbe:
           httpGet:
             path: /_matrix/client/versions

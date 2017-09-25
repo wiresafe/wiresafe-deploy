@@ -1,19 +1,6 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: neo-identity-disk
-  namespace: matrix
-spec:
-  storageClassName: standard
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
   name: neo-identity-config
   namespace: matrix
 spec:
@@ -22,7 +9,7 @@ spec:
   - ReadOnlyMany
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
