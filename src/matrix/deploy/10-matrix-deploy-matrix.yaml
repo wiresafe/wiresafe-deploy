@@ -24,12 +24,6 @@ spec:
       - name: neo-identity-var
         persistentVolumeClaim:
           claimName: neo-identity-var
-      - name: neo-hsconfig
-        secret:
-          secretName: matrix-hs-config
-      - name: firebase-secrets
-        secret:
-          secretName: neo-identity-service-account
       containers:
       - name: matrix-identity
         image: 'gcr.io/wiresafe-project/matrix-identity:0.0.11'
@@ -49,9 +43,6 @@ spec:
           readOnly: false
         - name: neo-disk
           mountPath: /var/synapse
-          readOnly: true
-        - name: firebase-secrets
-          mountPath: /etc/firebase
           readOnly: true
         readinessProbe:
           httpGet:
@@ -74,12 +65,9 @@ spec:
         - containerPort: 8448
         volumeMounts:
         - name: neo-disk
-          mountPath: /var/local
-        - name: neo-hsconfig
-          mountPath: /var/conf
+          mountPath: /data
         args:
         - "start"
-        - "/data/homeserver.yaml"
         readinessProbe:
           httpGet:
             path: /_matrix/client/versions

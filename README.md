@@ -28,6 +28,8 @@ $ gcloud container clusters get-credentials matrix-cluster
 
 ```
 
+## TLS certificates
+To request TLS certificate, ensure kube-lego is deployed as described [here](https://github.com/jetstack/kube-lego/blob/master/examples/gce/README.md)
 ## Kubernetes Deployment
 To deploy matrix home server and identity server from scratch.
 
