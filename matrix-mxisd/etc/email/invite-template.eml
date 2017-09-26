@@ -9,7 +9,7 @@ Content-Disposition: inline
 
 Hi,
 
-To protect your financial information %SENDER_NAME% from %ROOM_NAME% has invited you to send/receive wiring instructions for your upcoming transaction through WireSafe.
+To protect your financial information %SENDER_NAME_OR_ID% from [%ROOM_NAME_OR_ID%] has invited you to send/receive wiring instructions for your upcoming transaction through WireSafe.
 WireSafe is an invitation only encrypted messaging platform for securely sending and receiving wiring instructions.
 Click here to receive/send your wiring instructions
 
@@ -95,7 +95,7 @@ pre, code {
 
 <p>Hi,</p>
 
-<p>To protect your financial information %SENDER_DISPLAY_NAME% from [%ROOM_NAME%] has invited you to send/receive wiring instructions for your upcoming transaction through WireSafe.</p>
+<p>To protect your financial information %SENDER_NAME_OR_ID% from [%ROOM_NAME_OR_ID%] has invited you to send/receive wiring instructions for your upcoming transaction through WireSafe.</p>
 <p>WireSafe is an invitation only encrypted messaging platform for securely sending and receiving wiring instructions.</p>
 <p>
     <a
