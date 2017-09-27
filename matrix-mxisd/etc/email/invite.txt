@@ -1,0 +1,23 @@
+Hi,
+
+To protect your financial information %SENDER_NAME_OR_ID% from [%ROOM_NAME_OR_ID%] has invited you to send/receive wiring instructions for your upcoming transaction through WireSafe.
+WireSafe is an invitation only encrypted messaging platform for securely sending and receiving wiring instructions.
+Click here to receive/send your wiring instructions
+
+https://chat.wiresafe.com
+
+Please note that WireSafe requires Chrome, Firefox or Safari on the web or Apple iOS or Android on mobile
+About WireSafe:
+
+WireSafe guarantees the authenticity of wiring instructions exchanged through 4 layers of security
+
+PRIVATE - Information is sent across private network, eliminating the opportunity for interception
+
+ENCRYPTED - Information is encrypted, eliminating the opportunity for tampering.
+
+AUTHENTICATED - Wiresafe dual authenticates the Sender and Receiver, eliminating impersonation
+
+VALIDATED  -Bank routing numbers are validated to ensure transmission to the proper institution.
+
+
+For more details visit www.WireSafe.com
