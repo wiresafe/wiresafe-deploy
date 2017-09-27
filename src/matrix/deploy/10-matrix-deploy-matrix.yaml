@@ -26,7 +26,7 @@ spec:
           claimName: neo-identity-var
       containers:
       - name: matrix-identity
-        image: 'gcr.io/wiresafe-project/matrix-identity:0.0.11'
+        image: 'gcr.io/wiresafe-project/matrix-identity:0.0.12'
         env:
         - name: SPRING_APPLICATION_JSON
           valueFrom:
@@ -43,7 +43,7 @@ spec:
           readOnly: false
         - name: neo-disk
           mountPath: /var/synapse
-          readOnly: true
+          readOnly: false
         readinessProbe:
           httpGet:
             path: /_matrix/identity/status
@@ -54,7 +54,7 @@ spec:
           timeoutSeconds: 5
           failureThreshold: 10
       - name: matrix
-        image: gcr.io/wiresafe-project/matrix:latest
+        image: 'gcr.io/wiresafe-project/matrix:0.1.1'
         env:
         - name: SERVER_NAME
           value: "neo.wiresafe.com"
