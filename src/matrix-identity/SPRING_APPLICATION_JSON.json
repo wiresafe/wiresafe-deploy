@@ -1,0 +1,76 @@
+{
+  "matrix": {
+    "domain": "neo.wiresafe.com"
+  },
+  "server": {
+    "publicUrl": "https://neo-identity.wiresafe.com"
+  },
+  "key": {
+    "path": "/var/mxisd/sign.key"
+  },
+  "lookup": {
+    "recursive": {
+      "enabled": true,
+      "allowedCidr": [
+        "0/0"
+      ]
+    }
+  },
+  "firebase": {
+    "enabled": true,
+    "credentials": "/etc/mxisd/firebase-adminsdk-credentials.json",
+    "database": "<hidden>"
+  },
+  "storage": {
+    "provider": {
+      "sqlite": {
+        "database": "/var/mxisd/mxisd.db"
+      }
+    }
+  },
+  "dns": {
+    "overwrite": {
+      "homeserver": {
+        "name": "neo.wiresafe.com",
+        "value": "matrix:8448"
+      }
+    }
+  },
+  "forward": {
+    "servers": [
+      "https://wiresafe.org"
+    ]
+  },
+  "session": {
+    "policy": {
+      "validation": {
+        "enabled": false
+      }
+    }
+  },
+  "notification": {
+    "handler": {
+      "email": "sendgrid"
+    },
+    "handlers": {
+      "sendgrid": {
+        "api": {
+          "key": "<hidden>"
+        },
+        "identity": {
+          "from": "WireSafe",
+          "name": "noreply@wiresafe.com"
+        },
+        "templates": {
+          "invite": {
+            "subject": "You have been invited to WireSafe",
+            "body": {
+              "text": "/etc/mxisd/email-invite-template.txt",
+              "html": "/etc/mxisd/email-invite-template.html"
+            }
+          }
+        }
+      }
+    }
+  }
+}
