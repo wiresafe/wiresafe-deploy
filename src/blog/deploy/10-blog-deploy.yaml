@@ -7,7 +7,7 @@ metadata:
     app: blog
 spec:
   containers:
-  - image: launcher.gcr.io/google/wordpress4-php5-apache
+  - image: gcr.io/wiresafe-project/wordpress4-php5-apache
     name: wordpress
     env:
     - name: "WORDPRESS_DB_HOST"
