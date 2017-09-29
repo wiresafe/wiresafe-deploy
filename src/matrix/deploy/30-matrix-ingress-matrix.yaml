@@ -23,3 +23,7 @@ spec:
         - backend:
             serviceName: matrix
             servicePort: synapse-http
+        - path: "/_matrix/client/r0/user_directory/search"
+          backend:
+            serviceName: matrix-identity
+            servicePort: mxisd-http

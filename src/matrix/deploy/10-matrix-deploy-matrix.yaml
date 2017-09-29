@@ -26,7 +26,7 @@ spec:
           claimName: neo-identity-var
       containers:
       - name: matrix-identity
-        image: 'gcr.io/wiresafe-project/matrix-identity:0.0.14'
+        image: 'gcr.io/wiresafe-project/matrix-identity:0.0.15'
         env:
         - name: SPRING_APPLICATION_JSON
           valueFrom:
