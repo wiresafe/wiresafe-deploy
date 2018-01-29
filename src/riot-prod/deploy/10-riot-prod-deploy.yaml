@@ -14,7 +14,7 @@ spec:
         app: riot
     spec:
       containers:
-      - image: gcr.io/wiresafe-project/riot-prod:latest
+      - image: gcr.io/wiresafe-project/riot-prod:8b20cd7058a003412bcec2f1538098177e6ddc96
         name:  riot
         ports:
         - containerPort: 80

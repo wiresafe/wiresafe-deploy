@@ -6,11 +6,9 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: stage-chat-wiresafe-com
     kubernetes.io/ingress.class: gce
-#    kubernetes.io/tls-acme: false
+    kubernetes.io/tls-acme: "true"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
-  backend:
-    serviceName: riot
-    servicePort: http
   rules:
   - host: stage.chat.wiresafe.com
     http:
@@ -18,7 +16,8 @@ spec:
       - backend:
           serviceName: riot
           servicePort: http
-#  tls:
-#    - hosts:
-#      - stage.chat.wiresafe.com
-#      secretName: stage-chat-wiresafe-com-tls
+  tls:
+    - hosts:
+      - stage.chat.wiresafe.com
+      secretName: stage-chat-wiresafe-com-tls
+

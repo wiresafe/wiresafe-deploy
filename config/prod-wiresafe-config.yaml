@@ -1,0 +1,156 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: REDACTED
+    server: https://104.154.197.194
+  name: gke_wiresafe-project_us-central1-b_wiresafe
+- cluster:
+    certificate-authority-data: REDACTED
+    server: https://35.188.160.59
+  name: gke_yodata-1115_us-central1-a_cluster-1
+- cluster:
+    certificate-authority: /Users/dave/.minikube/ca.crt
+    server: https://192.168.99.101:8443
+  name: matrix
+- cluster:
+    certificate-authority: /Users/dave/.minikube/ca.crt
+    server: https://192.168.99.102:8443
+  name: minikube
+- cluster:
+    certificate-authority: /Users/dave/.minikube/ca.crt
+    server: https://192.168.99.104:8443
+  name: solid
+- cluster:
+    certificate-authority: /Users/dave/.minikube/ca.crt
+    server: https://192.168.99.101:8443
+  name: thrume.io.local
+contexts:
+- context:
+    cluster: matrix
+    namespace: riot-stage
+    user: matrix
+  name: matrix
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+- context:
+    cluster: solid
+    user: solid
+  name: solid
+- context:
+    cluster: thrume.io.local
+    user: thrume.io.local
+  name: thrume.io.local
+- context:
+    cluster: gke_wiresafe-project_us-central1-b_wiresafe
+    namespace: riot-prod
+    user: gke_wiresafe-project_us-central1-b_wiresafe
+  name: wiresafe
+current-context: wiresafe
+kind: Config
+preferences: {}
+users:
+- name: cluster-admin
+  user:
+    auth-provider:
+      config: {}
+      name: gcp
+- name: gke_wiresafe-project_us-central1-b_cluster-1
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.Glx5BIPa0CE1mNLijhjIsLPdPG4JmG__f364Q0CgQ8PI__o2qNIRxDynxGmVTOtowJMAYapspqDapQC3_vHafpfJahDDV91FJtluH8EyqZhsYRCYAvPb8eKQ2St5pQ
+        cmd-args: config config-helper --format=json
+        cmd-path: /Users/dave/google-cloud-sdk/bin/gcloud
+        expiry: 2017-06-30T19:35:15.000Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: gke_wiresafe-project_us-central1-b_demo-wiresafe
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.GlyEBIdV_sZzLFVRNBFkSFxCq8EElNKQTgWus1MU4tgdtSgzgNTR8Femcu9C73knastCtSo7aaHOxBj1u6ZXoq24BsawIeF_SxAo509-DRpyizNfZLxMR2-BM6arEA
+        cmd-args: config config-helper --format=json
+        cmd-path: /Users/dave/google-cloud-sdk/bin/gcloud
+        expiry: 2017-07-11T17:54:30.000Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: gke_wiresafe-project_us-central1-b_rocketchat-cluster
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.GluUBDdljHeQgguuXbJ-xRgUsqVChWyYPiAzq2RDnx1aGDn0FzZqyh-SyZPeFx4y8X_2ztRhynhyw_afZZ9tOsHF8Srtza25u2b8riNRy6VhvwbGgYkBW-FKbfpg
+        cmd-args: config config-helper --format=json
+        cmd-path: /Users/dave/google-cloud-sdk/bin/gcloud
+        expiry: 2017-07-26T17:07:48.000Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: gke_wiresafe-project_us-central1-b_wiresafe
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.GlxPBRohiJT-dh5HwSU7jefxAkXSDzG2WDbI9IJUyZmP9IcC_yPPOwtrB9bXO22MHAAcWgqE3qEDqe457nzXtr0OkLwMASZ_zrO59NIwLF-ttsOnkcJNfhqYsGL7GA
+        cmd-args: config config-helper --format=json
+        cmd-path: /Users/dave/google-cloud-sdk/bin/gcloud
+        expiry: 2018-01-27T17:25:05Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: gke_wiresafe-project_us-central1-b_wiresafe-stage
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.Glx6BPSweDPry7baLk8U8zalXV1n15MaQfzPMnO7aY66OlGLgtCqpg6Q92gXVkbpo1bb8CwKiXfHLnxdIiIzn7MMXrb47cvv64EhmIWpFTg8TME0uIrEqg8nw1v3xw
+        cmd-args: config config-helper --format=json
+        cmd-path: /Users/dave/google-cloud-sdk/bin/gcloud
+        expiry: 2017-07-01T21:08:53.000Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: gke_yodata-1115_us-central1-a_cluster-1
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.Gl3SBDUJtuV-jLv_e8VLNQ4OZz4p93Z_vvyTv_OY7NlgMxq8TVKBLJabKDTNE88hPFbAt_DtfEXNx_UXmFDE1GljDyz-Rk8SMauEGCt7RkIe6wXF6S2gZj2rzW42kMw
+        cmd-args: config config-helper --format=json
+        cmd-path: /Users/dave/google-cloud-sdk/bin/gcloud
+        expiry: 2017-09-26T19:18:26.000Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: kafka
+  user:
+    client-certificate: /Users/dave/.minikube/apiserver.crt
+    client-key: /Users/dave/.minikube/apiserver.key
+- name: kubeless
+  user:
+    client-certificate: /Users/dave/.minikube/apiserver.crt
+    client-key: /Users/dave/.minikube/apiserver.key
+- name: m
+  user:
+    client-certificate: /Users/dave/.minikube/apiserver.crt
+    client-key: /Users/dave/.minikube/apiserver.key
+- name: matrix
+  user:
+    client-certificate: /Users/dave/.minikube/client.crt
+    client-key: /Users/dave/.minikube/client.key
+- name: minikube
+  user:
+    client-certificate: /Users/dave/.minikube/client.crt
+    client-key: /Users/dave/.minikube/client.key
+- name: solid
+  user:
+    client-certificate: /Users/dave/.minikube/client.crt
+    client-key: /Users/dave/.minikube/client.key
+- name: thrume.io.local
+  user:
+    client-certificate: /Users/dave/.minikube/client.crt
+    client-key: /Users/dave/.minikube/client.key
+- name: wordpress
+  user:
+    client-certificate: /Users/dave/.minikube/apiserver.crt
+    client-key: /Users/dave/.minikube/apiserver.key
