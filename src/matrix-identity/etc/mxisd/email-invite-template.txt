@@ -4,12 +4,12 @@ To protect your financial information %SENDER_NAME_OR_ID% from [%ROOM_NAME_OR_ID
 WireSafe is an invitation only encrypted messaging platform for securely sending and receiving wiring instructions.
 Click here to receive/send your wiring instructions
 
-https://chat.wiresafe.com
+https://appurl.io/jdl60esu
 
 Please note that WireSafe requires Chrome, Firefox or Safari on the web or Apple iOS or Android on mobile
 About WireSafe:
 
-WireSafe guarantees the authenticity of wiring instructions exchanged through 4 layers of security
+WireSafe guarantees the authenticity of wiring instructions exchanged through 3 layers of security
 
 PRIVATE - Information is sent across private network, eliminating the opportunity for interception
 
