@@ -1,1 +1,1 @@
-FROM kamax/mxisd:0.8.1
+FROM kamax/mxisd:0.8.3
