@@ -39,7 +39,6 @@ $ kubectl apply -f src/matrix/deploy
 ```
 
 ## Riot Deployment
-
 ### Build / test docker image
 
 Use the --build-arg BRANCH={branch} to set the branch to use for the image - the default is wiresafe-stage

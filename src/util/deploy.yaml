@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: blog
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: null
+  generation: 1
+  labels:
+    run: bash
+  name: bash
+  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/bash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: bash
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: bash
+    spec:
+      containers:
+      - image: bash
+        imagePullPolicy: Always
+        name: bash
+        resources: {}
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - name: blog-data
+          mountPath: /var/www/html
+          subPath: wp
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: blog-data
+        persistentVolumeClaim:
+          claimName: blog-data

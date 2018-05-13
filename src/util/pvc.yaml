@@ -1,0 +1,16 @@
+---
+# Request a persistent volume from the cluster using a Persistent Volume Claim.
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: blog
+  name: blog-data
+
+spec:
+  selector:
+    matchLabels:
+      app: blog
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 50Gi
